@@ -21,4 +21,17 @@ class theatre(models.Model):
     def location(self):
         return '{}, {}, {}'.format(self.address, self.city, self.state)
 
+    def __str__(self):
+        return self.location
+
+class currentlyshowing(models.Model):
+    time = models.TimeField()
+    capacity = models.IntegerField()
+    cine_no = models.IntegerField()
+
+
+    @property
+    def cine(self):
+        return "{}, {}".format(self.capacity, self.cine_no)
+        
     
