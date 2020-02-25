@@ -1,6 +1,6 @@
 # TheatreManagement
 
-Standard procedure, if there's any changes to be made make a new branch with 
+Make a new branch with 
 
 ```
 git checkout -b <branch_name>
