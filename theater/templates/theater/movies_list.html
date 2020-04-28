@@ -1,0 +1,50 @@
+{% extends 'dbms/base.html' %}
+
+{% block title %} 
+    Movies list | Movies Central
+{% endblock %}
+
+{% block nav_movie_list %}
+<li class="nav-item ">
+    <a class="nav-link active" href="#">
+        Movies List
+    </a>
+</li>
+{% endblock %}
+
+{% block body %} 
+    <div class="jumbotron">
+        <div class="container">
+            <h1>
+                Now Showing
+            </h1>
+        </div>
+    </div>
+    <div class="container">
+        {% for show in shows %}
+        <div class="row">
+            <div class="col-7">
+                <h3>
+                    {{ show.movie.title }}
+                </h3>
+                <br>
+                <h5>
+                    {{ show.movie.genre }}
+                </h5>
+                <br>
+                {{ show.movie.rating }}
+                
+            </div>
+            <div class="col-1">
+                Seats left: {{ show.capacity }}
+            </div>
+            <div class="col-4">
+                <img src="{{ show.movie.poster.url }}" alt="{{ movie.title }} class="img-responsive" width = "100%"">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+
+    
+{% endblock %}

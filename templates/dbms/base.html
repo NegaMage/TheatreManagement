@@ -1,0 +1,97 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>   
+            {% block title %} 
+            Base page
+            {% endblock %}
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        
+    </head>
+    <body>
+        <div class="container">
+            <br>
+            <div class="page-header">
+                <ul class="nav nav-pills">
+                    {% block navbar %}
+
+                    {% block nav_home %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            Home
+                        </a>
+                    </li>
+                    {% endblock %}
+
+                    {% block nav_movie_list %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/theater/">
+                            Movies List
+                        </a>
+                    </li>
+                    {% endblock %}
+
+                    {% block nav_about %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about/">
+                            About
+                        </a>
+                    </li>
+                    {% endblock %}
+
+                    {% block nav_login %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Login
+                        </a>
+                    </li>
+                    {% endblock %}
+
+                    {% block nav_signup %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Sign up
+                        </a>
+                    </li>
+                    {% endblock %}
+
+                    {% block nav_logout %}
+                    <li class="nav-item">
+                        <form action="#" method="post">
+                            {% csrf_token %}
+                            <button type="submit">
+                                Logout
+                            </button>
+                        </form>
+                    </li>
+                    {% endblock %}
+
+                    {% endblock %}
+                  </ul>
+            </div>
+            <br>
+        </div>
+        {% block body %}
+        <div class="jumbotron">
+            <div class="container">
+                <h1>HELLO</h1>
+                Here's the base page.
+                <br>
+                <a href="about/">
+                    
+                </a>
+                <a href="articles/">
+                    <button class="btn btn-dark", type="button">Content!</button>
+                </a>
+    
+            </div>
+        </div>
+        {% endblock %}
+        
+    </body>
+
+
+</html>

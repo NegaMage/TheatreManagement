@@ -2,3 +2,4 @@ Django ~=3.0
 black
 pre-commit
 mysqlclient
+pillow

@@ -1,0 +1,24 @@
+{% extends 'dbms/base.html' %}
+
+{% block title %} 
+    About | Movies Central
+{% endblock %}
+
+{% block nav_about %}
+<li class="nav-item">
+    <a class="nav-link active" href="{% url 'about' %}">
+        About
+    </a>
+</li>
+{% endblock %}
+
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>About us</h1>
+            <br>
+            We are a movie booking service.
+        </div>
+    </div>
+{% endblock %}
