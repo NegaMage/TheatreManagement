@@ -37,6 +37,7 @@ class Movie(models.Model):
     rating = models.FloatField(verbose_name = "Rating")
     starring = models.TextField(verbose_name = "Starring", max_length=300)
     poster = models.ImageField(verbose_name="Poster",upload_to="poster",blank=True)
+    blurb = models.TextField(verbose_name="Summary", max_length=300)
 
     def clean(self):
         if self.rating > 5 or self.rating < 0 :
@@ -55,15 +56,20 @@ class Theatre(models.Model):
 
     def __str__(self):
         return '{}, {}, {}'.format(self.address, self.city, self.state)
+    
+    
 
 class Show(models.Model):
     theatre = models.OneToOneField(Theatre, on_delete=models.CASCADE)
     movie = models.OneToOneField(Movie, on_delete=models.CASCADE)
-    time = models.TimeField(verbose_name = "Duration")
+    time = models.TimeField(verbose_name = "Screening time")
     capacity = models.IntegerField(verbose_name = "Seats left")
-    cine_no = models.IntegerField(verbose_name = "Cinema Number")
+    cine_no = models.CharField(max_length=5, verbose_name = "Cinema Hall")
 
-    
+    def clean(self):
+        if self.capacity <= 0 :
+            raise ValidationError(gettext_lazy('That show doesn\'t have seats left'))
+        
 
     @property
     def cine(self):
@@ -71,8 +77,19 @@ class Show(models.Model):
 
     def __str__(self):
         return "{}".format(self.cine_no)
+    
+    def save(self, *args, **kwargs): 
+        if(self.capacity>self.theatre.capacity):
+            self.capacity = self.theatre.capacity
+        super(Show, self).save(*args, **kwargs)
         
 class Transaction(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    show = models.ForeignKey(Show, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    show = models.ForeignKey(Show, on_delete=models.CASCADE, null=True)
     seats = models.IntegerField(default=1)
+    
+    def save(self, *args, **kwargs): 
+        self.show.capacity -= self.seats
+        super(Show, self.show).save(*args, **kwargs)
+        super(Transaction, self).save(*args, **kwargs) 
+

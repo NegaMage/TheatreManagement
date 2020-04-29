@@ -1,13 +1,13 @@
 {% extends 'dbms/base.html' %}
 
 {% block title %} 
-    Movies list | Movies Central
+    {{ show.movie.title }} | Movies Central
 {% endblock %}
 
 {% block nav_movie_list %}
 <li class="nav-item ">
     <a class="nav-link active" href="#">
-        Movies List
+        {{ show.movie.title }}
     </a>
 </li>
 {% endblock %}
@@ -16,12 +16,12 @@
     <div class="jumbotron">
         <div class="container">
             <h1>
-                Now Showing
+                {{ show.movie.title }}
             </h1>
         </div>
     </div>
     <div class="container">
-        {% for show in shows %}
+
         <div class="row">
             <div class="col-7">
                 <h3>
@@ -45,7 +45,21 @@
                 
             </div>
         </div>
-        {% endfor %}
+        
+        <div class="row">
+            <div class="col-8">
+                {{ show.movie.desc}}
+            </div>
+            <div class="col-3">
+
+            </div>
+            <div class="col-1">
+                <a href="#">BUY NOW!!!!</a>
+            </div>
+        </div>
+        
+        
+        
     </div>
     
 

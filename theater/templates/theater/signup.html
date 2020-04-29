@@ -1,0 +1,23 @@
+{% extends 'djangonautic/base.html' %}
+
+{% block title %} 
+    Signup | Movies Central
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <div class="container">
+        <h1>Signup Page</h1>
+    </div>
+    
+</div>
+<div class="container">
+    <form class="site-form" action="/accounts/signup/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <br>
+        <input type="submit" value="Signup">
+    </form>
+    
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'dbms/base.html' %}
+
+{% block title %} 
+    Login | Movies Central
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <div class="container">
+        <h1>Login Page</h1>
+    </div>
+</div>
+<div class="container">
+    <form class="site-form" action="/dbms/login/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <br>
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+        {% endif %}
+        <input type="submit" value="Login">
+    </form>
+    
+</div>
+<div class="container">
+    <h3>Don't have an account? </h3>
+    <br>
+    <a href="/dbms/signup">Sign up</a>
+</div>
+{% endblock %}
