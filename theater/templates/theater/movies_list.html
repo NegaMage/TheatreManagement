@@ -25,7 +25,9 @@
         <div class="row">
             <div class="col-7">
                 <h3>
-                    {{ show.movie.title }}
+                    <a href="{{ show.theatre.slug_name }}/{{ show.movie.slug_title }}">
+                        {{ show.movie.title }}
+                    </a>
                 </h3>
                 <br>
                 <h5>

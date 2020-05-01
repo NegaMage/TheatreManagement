@@ -1,7 +1,15 @@
-{% extends 'djangonautic/base.html' %}
+{% extends 'dbms/base.html' %}
 
 {% block title %} 
     Signup | Movies Central
+{% endblock %}
+
+{% block nav_signup %}
+<li class="nav-item">
+    <a class="nav-link active" href="/theater/signup/">
+        Sign up
+    </a>
+</li>
 {% endblock %}
 
 {% block body %}
@@ -12,7 +20,7 @@
     
 </div>
 <div class="container">
-    <form class="site-form" action="/accounts/signup/" method="post">
+    <form class="site-form" action="/theater/signup/" method="post">
         {% csrf_token %}
         {{ form }}
         <br>

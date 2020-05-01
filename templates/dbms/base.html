@@ -44,7 +44,7 @@
 
                     {% block nav_login %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/theater/login">
                             Login
                         </a>
                     </li>
@@ -52,15 +52,32 @@
 
                     {% block nav_signup %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/theater/signup/">
                             Sign up
                         </a>
                     </li>
                     {% endblock %}
 
+                    {% block nav_purchase %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/theater/purchase/">
+                            Buy Tickets!
+                        </a>
+                    </li>
+                    {% endblock %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">
+                            Admin
+                        </a>
+                    </li>
+
+
+
+
                     {% block nav_logout %}
                     <li class="nav-item">
-                        <form action="#" method="post">
+                        <form action="/theater/logout/" method="post">
                             {% csrf_token %}
                             <button type="submit">
                                 Logout
@@ -69,6 +86,9 @@
                     </li>
                     {% endblock %}
 
+                    
+                    
+                    
                     {% endblock %}
                   </ul>
             </div>
@@ -80,13 +100,6 @@
                 <h1>HELLO</h1>
                 Here's the base page.
                 <br>
-                <a href="about/">
-                    
-                </a>
-                <a href="articles/">
-                    <button class="btn btn-dark", type="button">Content!</button>
-                </a>
-    
             </div>
         </div>
         {% endblock %}

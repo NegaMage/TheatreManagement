@@ -1,0 +1,29 @@
+{% extends 'dbms/base.html' %}
+
+{% block title %} 
+Buy a ticket!
+{% endblock %}
+
+{% block nav_purchase %}
+<li class="nav-item">
+    <a class="nav-link active" href="/theater/purchase">
+        Buy Tickets!
+    </a>
+</li>
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <div class="container">
+        <h1>Buy a ticket!</h1>
+        <br>
+    </div>
+</div>
+<div class="container">
+    <form action="/theater/purchase/" method="post" enctype="multipart/form-data">
+        {{ form }}
+        {% csrf_token %}
+        <input type="submit" value="Buy">
+    </form>
+</div>
+{% endblock %}
