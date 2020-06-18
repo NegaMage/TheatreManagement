@@ -31,6 +31,10 @@
                 </h3>
                 <br>
                 <h5>
+                    {{ show.theatre }}
+                </h5>
+                <br>
+                <h5>
                     {{ show.movie.genre }}
                 </h5>
                 <br>
@@ -38,7 +42,7 @@
                 
             </div>
             <div class="col-1">
-                Seats left: {{ show.capacity }}
+                Seats left: {{ show.theatre.capacity }}
             </div>
             <div class="col-4">
                 {% if show.movie.poster %}

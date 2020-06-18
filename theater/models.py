@@ -59,7 +59,7 @@ class Theatre(models.Model):
     state = models.CharField(verbose_name = "State", max_length = 30)
     showing = models.ManyToManyField('Movie', through='Show', related_name='now_showing')
     def __str__(self):
-        return '{}, {}, {}'.format(self.address, self.city, self.state)
+        return '{}, {}, {}, {}'.format(self.theatre_name, self.address, self.city, self.state)
 
 
 
